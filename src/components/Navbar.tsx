@@ -49,9 +49,9 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+254700000000" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="tel:+254710852527" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             <Phone className="h-4 w-4" />
-            +254 700 000 000
+            +254 710 852 527
           </a>
           <Link to="/contact">
             <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold">
@@ -85,8 +85,8 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="mt-3 pt-3 border-t border-border flex flex-col gap-2">
-              <a href="tel:+254700000000" className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground">
-                <Phone className="h-4 w-4" /> +254 700 000 000
+              <a href="tel:+254710852527" className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground">
+                <Phone className="h-4 w-4" /> +254 710 852 527
               </a>
               <Link to="/contact" onClick={() => setOpen(false)}>
                 <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-semibold">
