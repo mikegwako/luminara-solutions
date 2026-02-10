@@ -5,9 +5,9 @@ import SectionHeading from "@/components/SectionHeading";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 
 const contactInfo = [
-  { icon: Phone, label: "Phone", value: "+254 700 000 000", href: "tel:+254700000000" },
-  { icon: MessageCircle, label: "WhatsApp", value: "+254 700 000 000", href: "https://wa.me/254700000000" },
-  { icon: Mail, label: "Email", value: "info@luminara.co.ke", href: "mailto:info@luminara.co.ke" },
+  { icon: Phone, label: "Phone", value: "+254 710 852 527", href: "tel:+254710852527" },
+  { icon: MessageCircle, label: "WhatsApp", value: "+254 710 852 527", href: "https://wa.me/254710852527" },
+  { icon: Mail, label: "Email", value: "mikegwako@gmail.com", href: "mailto:mikegwako@gmail.com" },
   { icon: MapPin, label: "Location", value: "Serving Nairobi & Central Kenya", href: undefined },
   { icon: Clock, label: "Hours", value: "Mon–Fri: 8am–6pm, Sat: 9am–1pm", href: undefined },
 ];
