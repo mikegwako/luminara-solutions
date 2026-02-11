@@ -19,7 +19,7 @@ const SERVICE_LABELS: Record<string, string> = {
 };
 
 // Web3Forms access key (publishable — safe for client-side use)
-const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
+const WEB3FORMS_KEY = "ed4dbb20-334f-4042-8089-e4bf502fb9b2";
 
 const LeadCaptureForm = ({ variant = "default" }: { variant?: "default" | "hero" }) => {
   const [formData, setFormData] = useState({
