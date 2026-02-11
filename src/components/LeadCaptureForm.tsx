@@ -11,6 +11,15 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 
+const SERVICE_LABELS: Record<string, string> = {
+  ict: "ICT & Internet Solutions",
+  security: "Security & Surveillance",
+  solar: "Solar Power Solutions",
+  multiple: "Multiple Services",
+};
+
+const RECIPIENT_EMAIL = "theluminaragroup@gmail.com";
+
 const LeadCaptureForm = ({ variant = "default" }: { variant?: "default" | "hero" }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -26,7 +35,21 @@ const LeadCaptureForm = ({ variant = "default" }: { variant?: "default" | "hero"
       toast.error("Please fill in all required fields.");
       return;
     }
-    toast.success("Thank you! We'll get back to you within 24 hours.");
+
+    const serviceLabel = SERVICE_LABELS[formData.service] || formData.service;
+    const subject = encodeURIComponent(`New Lead: ${formData.name} — ${serviceLabel}`);
+    const body = encodeURIComponent(
+      `New lead from Luminara website:\n\n` +
+      `Name: ${formData.name}\n` +
+      `Business: ${formData.business || "N/A"}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Email: ${formData.email || "N/A"}\n` +
+      `Service Interest: ${serviceLabel}\n`
+    );
+
+    window.open(`mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`, "_self");
+
+    toast.success("Opening your email client — please hit Send to complete your request!");
     setFormData({ name: "", business: "", phone: "", email: "", service: "" });
   };
 
