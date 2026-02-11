@@ -18,7 +18,8 @@ const SERVICE_LABELS: Record<string, string> = {
   multiple: "Multiple Services",
 };
 
-const RECIPIENT_EMAIL = "theluminaragroup@gmail.com";
+// Web3Forms access key (publishable — safe for client-side use)
+const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 const LeadCaptureForm = ({ variant = "default" }: { variant?: "default" | "hero" }) => {
   const [formData, setFormData] = useState({
@@ -28,29 +29,46 @@ const LeadCaptureForm = ({ variant = "default" }: { variant?: "default" | "hero"
     email: "",
     service: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone || !formData.service) {
       toast.error("Please fill in all required fields.");
       return;
     }
 
+    setIsSubmitting(true);
     const serviceLabel = SERVICE_LABELS[formData.service] || formData.service;
-    const subject = encodeURIComponent(`New Lead: ${formData.name} — ${serviceLabel}`);
-    const body = encodeURIComponent(
-      `New lead from Luminara website:\n\n` +
-      `Name: ${formData.name}\n` +
-      `Business: ${formData.business || "N/A"}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Email: ${formData.email || "N/A"}\n` +
-      `Service Interest: ${serviceLabel}\n`
-    );
 
-    window.open(`mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`, "_self");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Lead: ${formData.name} — ${serviceLabel}`,
+          from_name: "Luminara Website",
+          name: formData.name,
+          business: formData.business || "N/A",
+          phone: formData.phone,
+          email: formData.email || "N/A",
+          service_interest: serviceLabel,
+        }),
+      });
 
-    toast.success("Opening your email client — please hit Send to complete your request!");
-    setFormData({ name: "", business: "", phone: "", email: "", service: "" });
+      const result = await response.json();
+      if (result.success) {
+        toast.success("Thank you! We'll get back to you within 24 hours.");
+        setFormData({ name: "", business: "", phone: "", email: "", service: "" });
+      } else {
+        toast.error("Something went wrong. Please try again or call us directly.");
+      }
+    } catch {
+      toast.error("Network error. Please try again or call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isHero = variant === "hero";
@@ -126,9 +144,10 @@ const LeadCaptureForm = ({ variant = "default" }: { variant?: "default" | "hero"
       <Button
         type="submit"
         size="lg"
+        disabled={isSubmitting}
         className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-base"
       >
-        Get Your Free Site Audit & Quote
+        {isSubmitting ? "Sending…" : "Get Your Free Site Audit & Quote"}
       </Button>
     </form>
   );
