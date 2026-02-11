@@ -7,6 +7,12 @@ import projectSolar from "@/assets/project-solar.jpg";
 import projectCctv from "@/assets/project-cctv.jpg";
 import projectNetwork from "@/assets/project-network.jpg";
 
+/**
+ * ✏️ TO ADD A NEW PROJECT:
+ * 1. Import your project image at the top (e.g. import myProject from "@/assets/my-project.jpg")
+ * 2. Copy one of the objects below and paste it at the end of the array.
+ * 3. Fill in image, title, category, challenge, and solution.
+ */
 const projects = [
   {
     image: projectSolar,
@@ -29,6 +35,7 @@ const projects = [
     challenge: "A 50-acre farm with no reliable internet, hindering operations and communication between field and office.",
     solution: "We installed a Ubiquiti point-to-point link and mesh Wi-Fi covering the entire farm, plus structured cabling for the main office.",
   },
+  // ➕ Add more projects here — just copy the object template above
 ];
 
 const Projects = () => {

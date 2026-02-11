@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, Clock, User } from "lucide-react";
+import { Clock } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 
+/**
+ * ✏️ TO ADD A NEW BLOG POST:
+ * Simply copy one of the objects below and paste it at the top of the array.
+ * Fill in slug, title, excerpt, category, date, and readTime.
+ * Supported categories: "Cybersecurity", "Solar", "Security", "ICT" (or add your own to categoryColor).
+ */
 const posts = [
   {
     slug: "benefits-business-firewall-kenya",
@@ -28,12 +33,15 @@ const posts = [
     date: "Dec 20, 2025",
     readTime: "6 min",
   },
+  // ➕ Add more posts here — just copy the object template above
 ];
 
 const categoryColor: Record<string, string> = {
   Cybersecurity: "text-primary bg-primary/10",
   Solar: "text-secondary bg-secondary/10",
   Security: "text-accent bg-accent/10",
+  ICT: "text-primary bg-primary/10",
+  // ➕ Add new categories here
 };
 
 const Blog = () => {
