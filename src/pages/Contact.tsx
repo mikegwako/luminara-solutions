@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { FaInstagram, FaXTwitter, FaTiktok, FaFacebookF } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
@@ -68,7 +69,28 @@ const Contact = () => {
                     </div>
                   </div>
                 ))}
-              </div>
+                </div>
+
+                {/* Socials */}
+                <div className="flex items-center gap-3 mb-8">
+                  {[
+                    { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
+                    { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
+                    { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
+                    { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
+                  ].map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      <social.icon className="h-5 w-5" />
+                    </a>
+                  ))}
+                </div>
 
               {/* Map */}
               <div className="rounded-xl overflow-hidden card-shadow border border-border h-64">
