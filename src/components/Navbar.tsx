@@ -106,6 +106,25 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="mt-3 pt-3 border-t border-border flex flex-col gap-2">
+              <div className="flex items-center gap-2 px-3 py-2">
+                {[
+                  { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
+                  { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
+                  { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
+                  { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
+                ].map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="h-9 w-9 rounded-md flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                  >
+                    <social.icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
               <a href="tel:+254710852527" className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground">
                 <Phone className="h-4 w-4" /> +254 710 852 527
               </a>
