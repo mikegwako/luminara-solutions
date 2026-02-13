@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { FaInstagram, FaXTwitter, FaTiktok, FaFacebookF } from "react-icons/fa6";
+import { FaInstagram, FaXTwitter, FaTiktok, FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -27,6 +27,7 @@ const Footer = () => {
                 { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
                 { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
                 { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
+                { icon: FaLinkedinIn, href: "https://linkedin.com/company/the-luminara-group", label: "LinkedIn" },
               ].map((social) => (
                 <a
                   key={social.label}
