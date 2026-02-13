@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { FaInstagram, FaXTwitter, FaTiktok, FaFacebookF } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -17,9 +18,28 @@ const Footer = () => {
                 <span className="block text-[10px] font-medium opacity-70 -mt-0.5">ICT & Power Solutions</span>
               </div>
             </div>
-            <p className="text-sm opacity-70 leading-relaxed">
+            <p className="text-sm opacity-70 leading-relaxed mb-4">
               Empowering Kenyan businesses with reliable internet, unbreachable security, and clean solar power.
             </p>
+            <div className="flex items-center gap-3">
+              {[
+                { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
+                { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
+                { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
+                { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="h-8 w-8 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                >
+                  <social.icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Services */}
