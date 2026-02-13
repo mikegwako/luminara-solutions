@@ -85,11 +85,11 @@ const Navbar = () => {
         {/* Mobile Social + Toggle */}
         <div className="lg:hidden flex items-center gap-1">
           {[
+            { icon: FaLinkedinIn, href: "https://linkedin.com/company/the-luminara-group", label: "LinkedIn" },
             { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
             { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
             { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
             { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
-            { icon: FaLinkedinIn, href: "https://linkedin.com/company/the-luminara-group", label: "LinkedIn" },
           ].map((social) => (
             <a
               key={social.label}
