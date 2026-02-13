@@ -81,10 +81,29 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button className="lg:hidden p-2 text-foreground" onClick={() => setOpen(!open)}>
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        {/* Mobile Social + Toggle */}
+        <div className="lg:hidden flex items-center gap-1">
+          {[
+            { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
+            { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
+            { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
+            { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
+          ].map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              className="h-8 w-8 rounded-md flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+            >
+              <social.icon className="h-3.5 w-3.5" />
+            </a>
+          ))}
+          <button className="p-2 text-foreground" onClick={() => setOpen(!open)}>
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
