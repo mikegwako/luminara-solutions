@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
+import { FaInstagram, FaXTwitter, FaTiktok, FaFacebookF } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -49,6 +50,26 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
+          <div className="flex items-center gap-1.5 mr-1">
+            {[
+              { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
+              { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
+              { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
+              { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="h-8 w-8 rounded-md flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+              >
+                <social.icon className="h-3.5 w-3.5" />
+              </a>
+            ))}
+          </div>
+          <div className="h-5 w-px bg-border" />
           <a href="tel:+254710852527" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             <Phone className="h-4 w-4" />
             +254 710 852 527
