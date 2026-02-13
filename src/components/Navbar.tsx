@@ -83,7 +83,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Social + Toggle */}
-        <div className="lg:hidden flex items-center gap-1">
+        <div className="lg:hidden flex items-center gap-0">
           {[
             { icon: FaLinkedinIn, href: "https://linkedin.com/company/the-luminara-group", label: "LinkedIn" },
             { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
