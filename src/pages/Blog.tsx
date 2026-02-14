@@ -1,14 +1,18 @@
-import { Clock } from "lucide-react";
+import { Clock, ExternalLink } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { Badge } from "@/components/ui/badge";
 
-/**
- * ✏️ TO ADD A NEW BLOG POST:
- * Simply copy one of the objects below and paste it at the top of the array.
- * Fill in slug, title, excerpt, category, date, and readTime.
- * Supported categories: "Cybersecurity", "Solar", "Security", "ICT" (or add your own to categoryColor).
- */
 const posts = [
+  {
+    slug: "sme-cybersecurity-shields-2025",
+    title: "The Door Is Open — Why Your SME Is Already a Target & the 5 Shields You Need in 2025",
+    excerpt: "Most SMEs think they're too small to hack. They're wrong. Learn the 5 essential cybersecurity shields every Kenyan business needs right now.",
+    category: "Cybersecurity",
+    date: "Feb 10, 2026",
+    readTime: "8 min",
+    url: "https://luminara-solutions.hashnode.dev/the-door-is-open-why-your-sme-is-already-a-target-and-the-5-shields-you-need-in-2025?showSharer=true",
+  },
   {
     slug: "benefits-business-firewall-kenya",
     title: "5 Benefits of a Business Firewall in Kenya",
@@ -33,7 +37,6 @@ const posts = [
     date: "Dec 20, 2025",
     readTime: "6 min",
   },
-  // ➕ Add more posts here — just copy the object template above
 ];
 
 const categoryColor: Record<string, string> = {
@@ -62,23 +65,34 @@ const Blog = () => {
         <div className="container-narrow">
           <SectionHeading tag="Latest Posts" title="Stay Informed" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <article key={post.slug} className="group bg-card rounded-xl border border-border card-shadow hover:card-shadow-hover transition-all duration-300 overflow-hidden">
-                <div className="h-44 bg-muted flex items-center justify-center">
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${categoryColor[post.category] || ""}`}>
-                    {post.category}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">{post.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {post.readTime}</span>
-                    <span>{post.date}</span>
+            {posts.map((post) => {
+              const hasUrl = !!(post as any).url;
+              const Wrapper = hasUrl ? 'a' : 'div';
+              const wrapperProps = hasUrl ? { href: (post as any).url, target: "_blank", rel: "noopener noreferrer" } : {};
+              return (
+                <Wrapper key={post.slug} {...wrapperProps} className={`group bg-card rounded-xl border border-border card-shadow hover:card-shadow-hover transition-all duration-300 overflow-hidden ${hasUrl ? 'cursor-pointer' : 'opacity-75'}`}>
+                  <div className="h-44 bg-muted flex items-center justify-center relative">
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${categoryColor[post.category] || ""}`}>
+                      {post.category}
+                    </span>
+                    {!hasUrl && (
+                      <Badge variant="secondary" className="absolute top-3 right-3 text-[10px]">Coming Soon</Badge>
+                    )}
                   </div>
-                </div>
-              </article>
-            ))}
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <div className="flex items-center gap-4">
+                        <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {post.readTime}</span>
+                        <span>{post.date}</span>
+                      </div>
+                      {hasUrl && <span className="flex items-center gap-1 text-primary font-medium">Read <ExternalLink className="h-3 w-3" /></span>}
+                    </div>
+                  </div>
+                </Wrapper>
+              );
+            })}
           </div>
         </div>
       </section>
