@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
-import { FaLinkedinIn, FaInstagram, FaXTwitter, FaTiktok, FaFacebookF } from "react-icons/fa6";
+import { FaLinkedinIn, FaInstagram } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -54,9 +55,6 @@ const Navbar = () => {
             {[
               { icon: FaLinkedinIn, href: "https://linkedin.com/company/the-luminara-group", label: "LinkedIn" },
               { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
-              { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
-              { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
-              { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
             ].map((social) => (
               <a
                 key={social.label}
@@ -70,6 +68,7 @@ const Navbar = () => {
               </a>
             ))}
           </div>
+          <ThemeToggle />
           <div className="h-5 w-px bg-border" />
           <a href="tel:+254710852527" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             <Phone className="h-4 w-4" />
@@ -87,9 +86,6 @@ const Navbar = () => {
           {[
             { icon: FaLinkedinIn, href: "https://linkedin.com/company/the-luminara-group", label: "LinkedIn" },
             { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
-            { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
-            { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
-            { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
           ].map((social) => (
             <a
               key={social.label}
@@ -102,6 +98,7 @@ const Navbar = () => {
               <social.icon className="h-3.5 w-3.5" />
             </a>
           ))}
+          <ThemeToggle />
           <button className="p-2 text-foreground" onClick={() => setOpen(!open)}>
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -130,9 +127,6 @@ const Navbar = () => {
               <div className="flex items-center gap-2 px-3 py-2">
                 {[
                     { icon: FaInstagram, href: "https://instagram.com/the_luminara_group", label: "Instagram" },
-                    { icon: FaXTwitter, href: "https://x.com/the_luminara_group", label: "Twitter" },
-                    { icon: FaTiktok, href: "https://tiktok.com/@the_luminara_group", label: "TikTok" },
-                    { icon: FaFacebookF, href: "https://facebook.com/the_luminara_group", label: "Facebook" },
                     { icon: FaLinkedinIn, href: "https://linkedin.com/company/the-luminara-group", label: "LinkedIn" },
                 ].map((social) => (
                   <a
